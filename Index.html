@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anne Frank Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #fbeec1, #f0c27b);
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #4a3f35;
+    }
+    .quiz-container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff8e1;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h3 {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #6b4f4f;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #543737;
+    }
+    #results {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #dcedc1;
+      border-left: 6px solid #8bc34a;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Anne Frank Quiz</h1>
+  <div class="quiz-container">
+    <form id="quiz-form">
+      <div class="question">
+        <h3>1. What is Anne Frank best known for?</h3>
+        <label><input type="radio" name="q1" value="a" /> Writing a famous diary</label>
+        <label><input type="radio" name="q1" value="b" /> Winning a Nobel Prize</label>
+        <label><input type="radio" name="q1" value="c" /> Becoming a soldier</label>
+      </div>
+
+      <div class="question">
+        <h3>2. Where did Anne and her family hide?</h3>
+        <label><input type="radio" name="q2" value="a" /> In a school basement</label>
+        <label><input type="radio" name="q2" value="b" /> In a secret annex behind a business</label>
+        <label><input type="radio" name="q2" value="c" /> In the woods</label>
+      </div>
+
+      <div class="question">
+        <h3>3. What happened to Anne Frank?</h3>
+        <label><input type="radio" name="q3" value="a" /> She escaped and lived in America</label>
+        <label><input type="radio" name="q3" value="b" /> She was captured and died in a concentration camp</label>
+        <label><input type="radio" name="q3" value="c" /> She became a famous singer</label>
+      </div>
+
+      <div class="question">
+        <h3>4. What does Anne’s diary help people understand?</h3>
+        <label><input type="radio" name="q4" value="a" /> The life of royalty</label>
+        <label><input type="radio" name="q4" value="b" /> The experience of a Jewish girl hiding during WWII</label>
+        <label><input type="radio" name="q4" value="c" /> How to write stories</label>
+      </div>
+
+      <button type="button" onclick="gradeQuiz()">Submit Answers</button>
+    </form>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    function gradeQuiz() {
+      const answers = {
+        q1: "a",
+        q2: "b",
+        q3: "b",
+        q4: "b"
+      };
+
+      let score = 0;
+      let total = Object.keys(answers).length;
+
+      for (let q in answers) {
+        let selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) {
+          score++;
+        }
+      }
+
+      let resultText = `You got ${score} out of ${total} correct!`;
+      document.getElementById("results").textContent = resultText;
+    }
+  </script>
+</body>
+</html>
